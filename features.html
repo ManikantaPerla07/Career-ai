@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Features | CareerAI</title>
-  <script src="assets/js/theme.js" defer></script>
+  <script src="/assets/js/theme.js" defer></script>
 
 
 
@@ -153,7 +153,7 @@ new Chart(ctx, {
 });
 
 /* Load 72 careers from backend */
-fetch("http://127.0.0.1:5000/careers")
+fetch("/careers")
   .then(res => res.json())
   .then(data => {
     const list = document.getElementById("careerList");

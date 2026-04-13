@@ -1,21 +1,26 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import numpy as np
 import joblib
 import json
 import os
+from pathlib import Path
 
 app = Flask(__name__)
 CORS(app)
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
+BACKEND_DIR = Path(__file__).resolve().parent
+ASSETS_DIR = ROOT_DIR / "assets"
 
 # -----------------------------------------------------------------------------
 # LOAD MODEL ARTIFACTS (TREE MODEL – NO SCALER)
 # -----------------------------------------------------------------------------
 try:
-    model = joblib.load("career_prediction_model.joblib")
-    label_encoder = joblib.load("label_encoder.joblib")
+    model = joblib.load(BACKEND_DIR / "career_prediction_model.joblib")
+    label_encoder = joblib.load(BACKEND_DIR / "label_encoder.joblib")
 
-    with open("feature_order.json", "r") as f:
+    with open(BACKEND_DIR / "feature_order.json", "r", encoding="utf-8") as f:
         FEATURE_ORDER = json.load(f)["feature_order"]
 
     print("✅ Model loaded successfully")
@@ -28,9 +33,44 @@ except Exception as e:
 
 # -----------------------------------------------------------------------------
 
-# HOME ROUTE
+# FRONTEND ROUTES
 @app.route("/", methods=["GET"])
 def home():
+    return send_from_directory(ROOT_DIR, "index.html")
+
+
+@app.route("/index.html", methods=["GET"])
+def index_page():
+    return send_from_directory(ROOT_DIR, "index.html")
+
+
+@app.route("/about.html", methods=["GET"])
+def about_page():
+    return send_from_directory(ROOT_DIR, "about.html")
+
+
+@app.route("/features.html", methods=["GET"])
+def features_page():
+    return send_from_directory(ROOT_DIR, "features.html")
+
+
+@app.route("/test.html", methods=["GET"])
+def test_page():
+    return send_from_directory(ROOT_DIR, "test.html")
+
+
+@app.route("/contact.html", methods=["GET"])
+def contact_page():
+    return send_from_directory(ROOT_DIR, "contact.html")
+
+
+@app.route("/assets/<path:filename>", methods=["GET"])
+def asset_file(filename):
+    return send_from_directory(ASSETS_DIR, filename)
+
+
+@app.route("/api", methods=["GET"])
+def api_home():
     return jsonify({
         "message": "Welcome to AI Career Guidance System",
         "version": "1.0",

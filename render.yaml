@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: ai-career-guidance-system
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn backend.app:app
+    autoDeploy: true
