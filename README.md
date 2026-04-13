@@ -1,321 +1,148 @@
+# AI Career Guidance System
+
+AI Career Guidance System is a full-stack machine learning web application that recommends top career paths based on aptitude and performance inputs.
+
+Live app:
+https://career-ai-wefq.onrender.com
+
+Repository:
+https://github.com/ManikantaPerla07/Career-ai
+
+## Highlights
+
+- End-to-end ML-powered career recommendation workflow
+- Top 5 career predictions with confidence scores
+- 8 aptitude dimensions and 8 performance indicators
+- Flask backend serving both API and frontend pages
+- Ready for one-service cloud deployment
+
+## How It Works
+
+1. User completes aptitude and performance assessment.
+2. Backend performs feature engineering.
+3. Gradient Boosting model predicts probabilities across careers.
+4. Application returns ranked top predictions.
+
+## Model Summary
+
+- Algorithm: Gradient Boosting Classifier
+- Input design: 25 total features
+- Output: Ranked top 5 careers with confidence percentages
+- Detailed report: backend/model_summary_report.txt
+
+## Tech Stack
+
+- Python, Flask, Flask-CORS
+- scikit-learn, NumPy, pandas, joblib
+- HTML, Tailwind CSS, JavaScript
+- Gunicorn for production serving
+
+## Project Structure
+
+    career-ai/
+    ├── assets/
+    │   ├── css/
+    │   └── js/
+    ├── backend/
+    │   ├── app.py
+    │   ├── career_prediction_model.joblib
+    │   ├── feature_order.json
+    │   ├── label_encoder.joblib
+    │   ├── model_summary_report.txt
+    │   └── requirements.txt
+    ├── about.html
+    ├── contact.html
+    ├── features.html
+    ├── index.html
+    ├── test.html
+    ├── Procfile
+    ├── render.yaml
+    └── requirements.txt
+
+## API Endpoints
+
+- GET /health
+- GET /careers
+- POST /predict
+
+Sample predict payload:
 
-
-# 🚀 AI Career Guidance System
-
-**An Intelligent Machine Learning–Powered Career Recommendation Platform**
-
----
-
-## 📌 Project Overview
-
-The **AI Career Guidance System** is an end-to-end machine learning–based web application designed to provide **personalized career recommendations** based on an individual's **aptitude assessment and performance evaluation**.
-
-This system leverages **Gradient Boosting Classification**, feature engineering, and probability-based ranking to recommend the **Top-5 most suitable career paths** with confidence scores.
-
-> 🎯 **Goal:** Help students and professionals make informed career decisions using AI.
-
----
-
-## 🧠 Key Features
-
-* 🔍 **Aptitude-Based Analysis**
-
-  * 8 cognitive & behavioral aptitude dimensions (0–20 scale)
-* 📊 **Performance Evaluation**
-
-  * 8 academic/professional performance indicators (POOR / AVG / BEST)
-* 🤖 **Machine Learning Prediction**
-
-  * Gradient Boosting Classifier
-  * Probability-based Top-5 career recommendations
-* 📈 **High Accuracy**
-
-  * Model accuracy ≈ **97%**
-* 🌐 **Full-Stack Web Application**
-
-  * Flask REST API (Backend)
-  * Modern responsive UI (Frontend)
-* 🎨 **Dark Mode UI**
-
-  * User-friendly & professional design
-* 🔄 **REST API Integration**
-
-  * JSON-based request/response handling
-* 🧪 **Model Health & Validation Endpoints**
-
----
-
-## 🧩 System Architecture
-
-```
-Frontend (HTML + Tailwind + JS)
-        ↓ (JSON API)
-Backend (Flask REST API)
-        ↓
-Machine Learning Model (Gradient Boosting)
-```
-
----
-
-## 🧠 Machine Learning Details
-
-### 🔹 Model Used
-
-* **Algorithm:** Gradient Boosting Classifier
-* **Reason:**
-
-  * Handles non-linear relationships
-  * High accuracy on structured tabular data
-  * Robust to overfitting
-
-### 🔹 Feature Engineering
-
-Total **25 engineered features**, including:
-
-* Raw aptitude scores
-* Performance metrics
-* Aggregate aptitude score
-* Aptitude diversity (standard deviation)
-* Intelligence, creativity, social & physical indices
-* Performance score & binary high-performer flag
-* Cluster indicator
-
-### 🔹 Output
-
-* **Top-5 career predictions**
-* Confidence score (%) for each career
-
----
-
-## 📊 Model Performance
-
-| Metric     | Value                       |
-| ---------- | --------------------------- |
-| Accuracy   | **≈ 97.6%**                 |
-| Model Type | Gradient Boosting           |
-| Output     | Probabilistic Top-5 Ranking |
-| Evaluation | Cross-validated             |
-
-📄 *Detailed metrics available in:*
-`backend/model_summary_report.txt`
-
----
-
-## 🗂 Project Structure
-
-```
-career-guidance-project/
-│
-├── backend/
-│   ├── app.py
-│   ├── career_prediction_model.joblib
-│   ├── feature_order.json
-│   ├── feature_scaler.joblib
-│   ├── label_encoder.joblib
-│   ├── model_summary_report.txt
-│   ├── requirements.txt
-│
-├── frontend/
-│   ├── assets/
-│   │   ├── css/
-│   │   │   └── styles.css
-│   │   └── js/
-│   │       ├── test.js
-│   │       └── theme.js
-│   │
-│   ├── index.html
-│   ├── about.html
-│   ├── features.html
-│   ├── test.html
-│   ├── contact.html
-│
-├── .gitignore
-└── README.md
-```
-
----
-
-## ⚙️ Tech Stack
-
-### 🧠 Machine Learning
-
-* Python
-* NumPy
-* Scikit-learn
-* Joblib
-
-### 🖥 Backend
-
-* Flask
-* Flask-CORS
-* REST API (JSON)
-
-### 🌐 Frontend
-
-* HTML5
-* Tailwind CSS
-* JavaScript (ES6)
-
-### 🧪 Development Tools
-
-* VS Code
-* Git & GitHub
-* PowerShell
-* Virtual Environment (venv)
-
----
-
-## ▶️ How to Run Locally
-
-### 1️⃣ Clone Repository
-
-```bash
-git clone https://github.com/ManikantaPerla07/AI-Career-Guidance-System.git
-cd AI-Career-Guidance-System
-```
-
-### 2️⃣ Setup Backend
-
-```bash
-cd backend
-python -m venv venv
-venv\Scripts\activate   # Windows
-pip install -r requirements.txt
-python app.py
-```
-
-Backend runs at:
-
-```
-http://127.0.0.1:5000
-```
-
-### 3️⃣ Run Frontend
-
-* Open `frontend/index.html` in browser
-  OR
-* Use Live Server in VS Code
-
----
-
-## 🔗 API Endpoints
-
-### 🔹 Health Check
-
-```
-GET /health
-```
-
-### 🔹 Predict Career
-
-```
-POST /predict
-Content-Type: application/json
-```
-
-**Request Payload**
-
-```json
-{
-  "aptitudes": {
-    "linguistic": 12,
-    "musical": 10,
-    "bodily": 11,
-    "logical_mathematical": 15,
-    "spatial_visualization": 14,
-    "interpersonal": 13,
-    "intrapersonal": 12,
-    "naturalist": 11
-  },
-  "performance": {
-    "project_performance": "AVG",
-    "practical_skills": "AVG",
-    "research_interest": "AVG",
-    "communication_skills": "AVG",
-    "leadership_qualities": "AVG",
-    "teamwork": "AVG",
-    "time_management": "AVG",
-    "self_learning": "AVG"
-  }
-}
-```
-
-**Response**
-
-```json
-{
-  "status": "success",
-  "top_predictions": [
     {
-      "rank": 1,
-      "career": "Economist",
-      "confidence": 31.11
+      "aptitudes": {
+        "linguistic": 12,
+        "musical": 10,
+        "bodily": 11,
+        "logical_mathematical": 15,
+        "spatial_visualization": 14,
+        "interpersonal": 13,
+        "intrapersonal": 12,
+        "naturalist": 11
+      },
+      "performance": {
+        "project_performance": "AVG",
+        "practical_skills": "AVG",
+        "research_interest": "AVG",
+        "communication_skills": "AVG",
+        "leadership_qualities": "AVG",
+        "teamwork": "AVG",
+        "time_management": "AVG",
+        "self_learning": "AVG"
+      }
     }
-  ]
-}
-```
 
----
+## Run Locally
 
-## 🎓 Academic & Resume Value
+1. Clone the repository
 
-This project demonstrates expertise in:
+       git clone https://github.com/ManikantaPerla07/Career-ai
+       cd Career-ai
 
-* Machine Learning pipeline design
-* Feature engineering
-* Model evaluation & optimization
-* REST API development
-* Full-stack integration
-* Production-ready project structuring
+2. Create and activate virtual environment
 
-### 📌 Resume-Ready Description
+       python -m venv .venv
+       .venv\Scripts\activate
 
-> *Developed an AI-based Career Guidance System using Gradient Boosting ML achieving 97% accuracy. Built a full-stack application with Flask REST APIs and a modern responsive frontend to deliver probabilistic career recommendations.*
+3. Install dependencies
 
----
+       pip install -r requirements.txt
 
-## 🔮 Future Enhancements
+4. Start the app
 
-* SHAP-based explainability
-* User login & history tracking
-* Dynamic cluster detection
-* Deployment on cloud (Render / AWS)
-* Interactive charts & dashboards
+       python backend/app.py
 
----
+5. Open in browser
 
-## 👨‍💻 Author
+       http://127.0.0.1:5000
 
-**Manikanta Perla**
-AI & Machine Learning Enthusiast
-📧 Email: [careerai.help@gmail.com](mailto:careerai.help@gmail.com)
-📍 India
+## Deployment
 
----
+This project is configured for Render as a single web service where backend and frontend are served together.
 
-## 📜 License
+- Build command: pip install -r requirements.txt
+- Start command: gunicorn backend.app:app
+- Python version is pinned in render.yaml
 
-This project is for **educational & academic purposes**.
-All rights reserved © 2025.
+## Troubleshooting
 
+- If deploy fails with dependency issues, ensure backend/requirements.txt and requirements.txt are in sync.
+- If static files do not load, verify assets are available under /assets.
+- If model load fails, confirm all joblib/json artifacts are committed in backend.
 
+## Roadmap
 
+- Explainable AI outputs for recommendations
+- User accounts and saved assessment history
+- Improved analytics dashboard
+- Enhanced mobile UX
 
-## Deployment on Render (Free) - LIVE AND ACCESSIBLE TO EVERYONE
+## Author
 
-Your AI Career Guidance System is deployment-ready! Share a live link with anyone.
+Manikanta Perla
 
-### Quick Deployment in 5 Minutes
+Email: careerai.help@gmail.com
 
-**Step 1:** Go to https://render.com and sign up with GitHub
+## License
 
-**Step 2:** Click "New" → "Web Service" → Select this repository
-
-**Step 3:** Configure:
-- Root Directory: backend
-- Build: pip install -r requirements.txt  
-- Start: gunicorn app:app
-
-**Step 4:** Deploy and share your live URL!
+This project is intended for educational and academic use.
 
 Your app will be accessible at: https://your-app-name.onrender.com
