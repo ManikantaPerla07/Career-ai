@@ -1,163 +1,198 @@
-
-
 # CareerAI - AI Career Guidance System
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-blue.svg)](https://career-ai-wefq.onrender.com/)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
-![Backend](https://img.shields.io/badge/Backend-Flask-black)
-![Deployment](https://img.shields.io/badge/Deploy-Render-46E3B7)
+![Framework](https://img.shields.io/badge/Backend-Flask-black)
+![License](https://img.shields.io/badge/License-Educational-green)
 
-CareerAI is a full-stack machine learning web app that recommends top career paths from aptitude and performance inputs.
-It uses a trained Gradient Boosting model and serves both API endpoints and frontend pages from one Flask service.
+CareerAI is a full-stack machine learning web application that recommends top career paths from aptitude and performance inputs. It uses a trained Gradient Boosting classifier and serves both API and frontend pages from one Flask service.
 
-Live app: https://career-ai-wefq.onrender.com/
+Live URL: https://career-ai-wefq.onrender.com/
+
 Repository: https://github.com/ManikantaPerla07/Career-ai
 
 ## Table of Contents
 
-- Overview
-- Feature Highlights
-- Resume Highlights
-- Architecture
-- How It Works
-- Tech Stack
-- Project Structure
-- API Reference
-- Input Schema
-- Run Locally
-- Deploy on Render
-- Troubleshooting
-- FAQ
-- Roadmap
-- Author
-- License
+- [Overview](#overview)
+- [Feature Highlights](#feature-highlights)
+- [Resume Highlights](#resume-highlights)
+- [Screenshots](#screenshots)
+- [Tech Stack](#tech-stack)
+- [Architecture](#architecture)
+- [Architecture Diagram](#architecture-diagram)
+- [How It Works](#how-it-works)
+- [Project Structure](#project-structure)
+- [API Reference](#api-reference)
+- [Input Schema](#input-schema)
+- [Run Locally](#run-locally)
+- [Deploy on Render](#deploy-on-render)
+- [Troubleshooting](#troubleshooting)
+- [FAQ](#faq)
+- [Contributing](#contributing)
+- [Changelog](#changelog)
+- [Roadmap](#roadmap)
+- [Author](#author)
+- [License](#license)
 
 ## Overview
 
-CareerAI helps students and early professionals explore suitable career paths based on structured self-assessment data.
-
-The system:
-- Accepts aptitude and performance features
-- Builds a model-aligned feature vector
-- Predicts probability distribution across career classes
-- Returns top 5 ranked recommendations with confidence scores
+CareerAI helps students and early professionals explore likely-fit career paths from structured assessment data. The model returns top-5 ranked recommendations with confidence scores, and the backend exposes clean endpoints for app integration.
 
 ## Feature Highlights
 
-- End-to-end ML recommendation workflow
-- Top 5 career predictions with confidence percentages
-- 8 aptitude dimensions + 8 performance indicators
-- Feature engineering aligned with training pipeline
-- Flask API with clean JSON responses
-- Frontend and API served by a single backend service
-- Render-ready deployment configuration
+- End-to-end ML recommendation workflow.
+- Top-5 career predictions with confidence percentages.
+- 8 aptitude dimensions and 8 performance indicators.
+- Feature-engineered input vector aligned with training schema.
+- Flask backend serving both API and frontend static pages.
+- Render-ready single-service deployment.
 
 ## Resume Highlights
 
-- Built and deployed a production-style ML recommendation platform using Flask and scikit-learn
-- Designed feature engineering pipeline with 25 model-aligned inputs
-- Implemented top 5 probabilistic career ranking endpoint
-- Delivered one-service architecture serving frontend pages and backend API
-- Added operational readiness for cloud deployment and troubleshooting
+- Built and deployed a production-style ML recommendation app using Flask and scikit-learn.
+- Designed feature engineering pipeline with 25 model-aligned features for robust inference.
+- Implemented ranked top-5 prediction endpoint with confidence scoring.
+- Delivered one-service deployment architecture where backend serves both API and UI.
+- Added operational docs for local run, deployment, and troubleshooting.
 
-Resume one-liner:
+Resume-ready one-liner:
 
-Developed and deployed a full-stack AI Career Guidance platform using Flask and Gradient Boosting to generate top-5 career recommendations with confidence scores from aptitude and performance inputs.
+Developed and deployed a full-stack AI Career Guidance platform using Flask and Gradient Boosting to generate top-5 career recommendations with confidence scoring from aptitude and performance data.
 
-## Architecture
+## Screenshots
 
-High-level flow:
-1. User submits assessment from web UI
-2. Flask backend validates payload and engineers features
-3. Gradient Boosting classifier predicts class probabilities
-4. API returns ranked top 5 careers with confidence
-5. Same backend serves HTML pages and static assets
+Add screenshots to:
 
-## How It Works
+- docs/screenshots/
 
-Input blocks:
-- Aptitudes: numeric values for 8 dimensions
-- Performance: categorical values for 8 indicators
+Suggested file names:
 
-Feature engineering:
-- Raw aptitude values
-- Raw performance encodings
-- Total aptitude score
-- Aptitude diversity
-- Intelligence, creativity, social, physical indices
-- Performance score and high-performer flag
-- Optional cluster value
+- docs/screenshots/home.png
+- docs/screenshots/features.png
+- docs/screenshots/assessment.png
+- docs/screenshots/results.png
 
-Output:
-- Top 5 careers
-- Rank and confidence percentage for each recommendation
+Markdown snippet:
+
+```md
+### Home
+![Home](docs/screenshots/home.png)
+
+### Features
+![Features](docs/screenshots/features.png)
+
+### Assessment
+![Assessment](docs/screenshots/assessment.png)
+
+### Results
+![Results](docs/screenshots/results.png)
+```
 
 ## Tech Stack
 
-Backend:
+Frontend
+
+- HTML5
+- Tailwind CSS
+- JavaScript
+
+Backend
+
 - Python
 - Flask
 - Flask-CORS
 - Gunicorn
 
-Machine Learning:
+Machine Learning
+
 - scikit-learn
 - NumPy
 - pandas
 - joblib
 
-Frontend:
-- HTML5
-- Tailwind CSS
-- JavaScript
+## Architecture
 
-Deployment:
-- Render (single web service)
+1. User submits aptitude and performance values from UI.
+2. Flask API builds engineered feature vector.
+3. Gradient Boosting model computes class probabilities.
+4. API returns ranked top-5 careers with confidence.
+5. Flask serves HTML pages and static assets from same service.
+
+## Architecture Diagram
+
+```mermaid
+flowchart LR
+    UI[HTML Tailwind JS Frontend] --> API[Flask Backend]
+    API --> FE[Feature Engineering 25 Features]
+    FE --> ML[Gradient Boosting Classifier]
+    ML --> OUT[Top 5 Careers + Confidence]
+    API --> PAGES[Static Pages + Assets]
+```
+
+## How It Works
+
+- Aptitude input: 8 numeric fields.
+- Performance input: 8 categorical fields (POOR, AVG, BEST).
+- Engineered features: aggregate score, diversity, intelligence/creativity/social/physical indices, performance score, high-performer flag, optional cluster.
+- Inference output: sorted top-5 predictions from model probabilities.
 
 ## Project Structure
 
+```text
 Career-ai/
-- assets/
-  - css/
-  - js/
-- backend/
-  - app.py
-  - career_prediction_model.joblib
-  - feature_order.json
-  - label_encoder.joblib
-  - model_summary_report.txt
-  - requirements.txt
-- about.html
-- contact.html
-- features.html
-- index.html
-- test.html
-- Procfile
-- render.yaml
-- requirements.txt
-- README.md
+|- assets/
+|  |- css/
+|  |- js/
+|- backend/
+|  |- app.py
+|  |- career_prediction_model.joblib
+|  |- feature_order.json
+|  |- feature_scaler.joblib
+|  |- label_encoder.joblib
+|  |- model_summary_report.txt
+|  |- requirements.txt
+|- index.html
+|- about.html
+|- features.html
+|- test.html
+|- contact.html
+|- Procfile
+|- render.yaml
+|- requirements.txt
+|- README.md
+```
 
 ## API Reference
 
-GET /api
-- Returns API metadata and endpoint summary.
+### GET /api
 
-GET /health
-- Returns health status and model availability.
-Example:
+Returns API metadata and endpoint summary.
+
+### GET /health
+
+Returns service status, model-loaded state, and expected feature count.
+
+Example response:
+
+```json
 {
   "status": "OK",
   "model_loaded": true,
   "features_expected": 25
 }
+```
 
-GET /careers
-- Returns all supported career labels and total count.
+### GET /careers
 
-POST /predict
-- Returns top 5 ranked predictions.
+Returns all available career labels and total count.
 
-Sample request:
+### POST /predict
+
+Returns top-5 ranked career predictions.
+
+Request example:
+
+```json
 {
   "aptitudes": {
     "linguistic": 12,
@@ -181,8 +216,11 @@ Sample request:
   },
   "cluster": 0
 }
+```
 
-Sample response:
+Response example:
+
+```json
 {
   "status": "success",
   "top_predictions": [
@@ -193,10 +231,12 @@ Sample response:
     }
   ]
 }
+```
 
 ## Input Schema
 
 Aptitude keys:
+
 - linguistic
 - musical
 - bodily
@@ -207,6 +247,7 @@ Aptitude keys:
 - naturalist
 
 Performance keys:
+
 - project_performance
 - practical_skills
 - research_interest
@@ -216,159 +257,96 @@ Performance keys:
 - time_management
 - self_learning
 
-Allowed performance values:
+Accepted values for performance fields:
+
 - POOR
 - AVG
 - BEST
 
 ## Run Locally
 
-1. Clone the repo
+```bash
 git clone https://github.com/ManikantaPerla07/Career-ai
 cd Career-ai
-
-2. Create and activate virtual environment (Windows)
 python -m venv .venv
 .venv\Scripts\activate
-
-3. Install dependencies
 pip install -r requirements.txt
-
-4. Start the app
 python backend/app.py
+```
 
-5. Open in browser
-http://127.0.0.1:5000
+Open:
+
+- http://127.0.0.1:5000
 
 ## Deploy on Render
 
-This project is configured for single-service deployment.
+This repository is configured for single-service deployment.
 
-Recommended settings:
+Render settings:
+
+- Build command: pip install -r requirements.txt
+- Start command: gunicorn backend.app:app
 - Environment: Python
-- Build Command: pip install -r requirements.txt
-- Start Command: gunicorn backend.app:app
-- Config file: render.yaml
+- File used: render.yaml
 
 ## Troubleshooting
 
 If model fails to load:
-- Ensure artifact files exist in backend folder
-- Confirm file names are unchanged
-- Check logs for missing joblib or JSON files
 
-If prediction fails with feature mismatch:
-- Verify all required aptitude/performance keys are present
-- Ensure performance values are POOR, AVG, or BEST
-- Confirm backend feature engineering order was not modified
+- Confirm these files exist in backend/:
+  - career_prediction_model.joblib
+  - label_encoder.joblib
+  - feature_order.json
+
+If prediction returns feature mismatch:
+
+- Ensure payload uses all required aptitude and performance keys.
+- Confirm no custom code changed feature engineering order.
 
 If static files do not load:
-- Confirm assets exist under assets directory
-- Verify route path is /assets/...
-- Ensure app is running from repository root context
 
-If deploy fails:
-- Confirm root requirements.txt includes backend dependencies
-- Re-check Render start command and Python environment
+- Verify assets are in assets/ and URL path is /assets/<file>.
+- Check that app is started from repository root context.
+
+If Render build fails:
+
+- Confirm requirements.txt includes backend dependencies via -r backend/requirements.txt.
 
 ## FAQ
 
-Why top 5 predictions instead of one?
-- Model probabilities are more useful when presented as ranked options.
+### Why top predictions instead of one career?
 
-Is this suitable for final career decisions?
-- No. This is a guidance tool for educational use and should be combined with mentoring.
+The model outputs class probabilities. Returning top-5 improves usefulness and transparency.
 
-Why confidence scores do not sum to 100?
-- Only top-ranked classes are returned, not all classes.
+### Is this suitable for final career decisions?
+
+No. It is a guidance tool for educational use and should be combined with human mentoring.
+
+### Why do confidence values not sum to 100 in response?
+
+Only top-5 predictions are returned; not all classes are shown.
+
+## Contributing
+
+Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+
+## Changelog
+
+Release updates are tracked in [CHANGELOG.md](CHANGELOG.md).
 
 ## Roadmap
 
-- Explainability layer for recommendation rationale
-- User accounts and saved history
-- Enhanced analytics dashboard
-- Better mobile UX
-- Assessment personalization
+- Explainability output for model decisions.
+- User login and recommendation history.
+- Better analytics dashboard for trend insights.
+- Enhanced mobile-first UI refinement.
 
 ## Author
 
 Manikanta Perla
-Email: careerai.help@gmail.com
+
+- Email: careerai.help@gmail.com
 
 ## License
 
 This project is intended for educational and academic use.
-
-CONTRIBUTING.md (new)
-
-# Contributing
-
-Thanks for contributing to CareerAI.
-
-## Workflow
-
-1. Fork the repository
-2. Create a branch from main
-3. Keep PRs focused to one change area
-4. Update docs for behavior changes
-5. Open PR with test notes
-
-## Validation Checklist
-
-- App runs with: python backend/app.py
-- /health endpoint works
-- /predict endpoint works
-- Static pages and assets load correctly
-
-## Pull Request Checklist
-
-- I reviewed my own changes
-- I updated docs where needed
-- I did not commit secrets
-- I kept the PR focused
-
-CHANGELOG.md (new)
-
-# Changelog
-
-All notable project updates are documented here.
-
-## 2026-04-14
-
-### Added
-- Professional README structure and polished sections
-- API and schema documentation
-- Troubleshooting and FAQ
-
-### Changed
-- Improved deployment and run instructions
-- Cleaned content for GitHub readability
-
-### Notes
-- Documentation quality upgrade release
-
-pull_request_template.md (new)
-
-## Summary
-Describe what this PR changes and why.
-
-## Type of Change
-- [ ] Documentation
-- [ ] Bug fix
-- [ ] Feature
-- [ ] Refactor
-- [ ] Other
-
-## Validation
-- [ ] App starts locally
-- [ ] /health tested
-- [ ] /predict tested
-- [ ] Static pages tested
-
-## Checklist
-- [ ] Self-reviewed
-- [ ] Docs updated
-- [ ] No secrets committed
-- [ ] Focused PR
-
-If you want, I can next give you a one-command Git block to add these 4 files and push cleanly to Career-ai in one shot.
