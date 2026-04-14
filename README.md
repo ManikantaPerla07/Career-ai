@@ -1,14 +1,70 @@
-Great call. Paste this as your full README.md for Career-ai:
+I’ll inspect your current Career-ai README as it is now on GitHub, then I’ll give a concrete “future upgrades” pass with high-impact sections/snippets you can apply next. I’m starting with a fresh fetch of the live README content.
+
+
+
+
+
+Fetched https://github.com/ManikantaPerla07/Career-ai
+
+Fetched https://raw.githubusercontent.com/ManikantaPerla07/Career-ai/main/README.md
+
+I inspected the live README and spotted a few concrete issues from the paste; I’ll quickly verify whether CONTRIBUTING/CHANGELOG are live too, then I’ll give you a clean “v2 upgrade pack” you can paste safely.
+
+
+
+
+
+
+
+Fetched https://raw.githubusercontent.com/ManikantaPerla07/Career-ai/main/CONTRIBUTING.md
+
+Fetched https://raw.githubusercontent.com/ManikantaPerla07/Career-ai/main/CHANGELOG.md
+
+Fetched https://raw.githubusercontent.com/ManikantaPerla07/Career-ai/main/.github/pull_request_template.md
+
+Perfect, I inspected your live Career-ai repo after your paste. Big improvement already, but a few issues are still visible.
+
+What I found in the current live README:
+1. Title formatting is broken at the top.
+Current looks split as:
+- CareerAI - AI
+- Career Guidance System
+It should be one clean heading.
+
+2. An accidental chat line is still present at the bottom.
+The README currently includes a conversational line that should not be in project docs.
+
+3. Table of contents has broken bullet formatting in a few places.
+Some items are split across lines, which looks unprofessional on GitHub.
+
+4. Supporting professional docs are still missing on remote.
+I checked and got 404 for:
+- CONTRIBUTING.md
+- CHANGELOG.md
+- pull_request_template.md
+
+High-impact future upgrades to do now:
+1. Clean README header/footer formatting.
+2. Add CONTRIBUTING.
+3. Add CHANGELOG.
+4. Add PR template.
+5. Add screenshot folder placeholder.
+
+Paste-ready content below.
+
+README replacement (cleaned and professional)
 
 # CareerAI - AI Career Guidance System
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-blue.svg)](https://career-ai-wefq.onrender.com/)  ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)  
-![Backend](https://img.shields.io/badge/Backend-Flask-black)  ![Deployment](https://img.shields.io/badge/Deploy-Render-46E3B7)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue.svg)](https://career-ai-wefq.onrender.com/)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Backend](https://img.shields.io/badge/Backend-Flask-black)
+![Deployment](https://img.shields.io/badge/Deploy-Render-46E3B7)
 
-CareerAI is a full-stack machine learning web app that recommends top career paths from aptitude and performance inputs.  
+CareerAI is a full-stack machine learning web app that recommends top career paths from aptitude and performance inputs.
 It uses a trained Gradient Boosting model and serves both API endpoints and frontend pages from one Flask service.
 
-Live app: https://career-ai-wefq.onrender.com/  
+Live app: https://career-ai-wefq.onrender.com/
 Repository: https://github.com/ManikantaPerla07/Career-ai
 
 ## Table of Contents
@@ -65,11 +121,10 @@ Developed and deployed a full-stack AI Career Guidance platform using Flask and 
 ## Architecture
 
 High-level flow:
-
-1. User submits assessment from web UI  
-2. Flask backend validates payload and engineers features  
-3. Gradient Boosting classifier predicts class probabilities  
-4. API returns ranked top 5 careers with confidence  
+1. User submits assessment from web UI
+2. Flask backend validates payload and engineers features
+3. Gradient Boosting classifier predicts class probabilities
+4. API returns ranked top 5 careers with confidence
 5. Same backend serves HTML pages and static assets
 
 ## How It Works
@@ -115,91 +170,83 @@ Deployment:
 
 ## Project Structure
 
-    Career-ai/
-    ├── assets/
-    │   ├── css/
-    │   └── js/
-    ├── backend/
-    │   ├── app.py
-    │   ├── career_prediction_model.joblib
-    │   ├── feature_order.json
-    │   ├── label_encoder.joblib
-    │   ├── model_summary_report.txt
-    │   └── requirements.txt
-    ├── about.html
-    ├── contact.html
-    ├── features.html
-    ├── index.html
-    ├── test.html
-    ├── Procfile
-    ├── render.yaml
-    ├── requirements.txt
-    └── README.md
+Career-ai/
+- assets/
+  - css/
+  - js/
+- backend/
+  - app.py
+  - career_prediction_model.joblib
+  - feature_order.json
+  - label_encoder.joblib
+  - model_summary_report.txt
+  - requirements.txt
+- about.html
+- contact.html
+- features.html
+- index.html
+- test.html
+- Procfile
+- render.yaml
+- requirements.txt
+- README.md
 
 ## API Reference
 
-### GET /api
+GET /api
+- Returns API metadata and endpoint summary.
 
-Returns API metadata and endpoint summary.
+GET /health
+- Returns health status and model availability.
+Example:
+{
+  "status": "OK",
+  "model_loaded": true,
+  "features_expected": 25
+}
 
-### GET /health
+GET /careers
+- Returns all supported career labels and total count.
 
-Returns health status and model availability.
-
-Example response:
-
-    {
-      "status": "OK",
-      "model_loaded": true,
-      "features_expected": 25
-    }
-
-### GET /careers
-
-Returns all supported career labels and total count.
-
-### POST /predict
-
-Returns top 5 ranked predictions.
+POST /predict
+- Returns top 5 ranked predictions.
 
 Sample request:
-
-    {
-      "aptitudes": {
-        "linguistic": 12,
-        "musical": 10,
-        "bodily": 11,
-        "logical_mathematical": 15,
-        "spatial_visualization": 14,
-        "interpersonal": 13,
-        "intrapersonal": 12,
-        "naturalist": 11
-      },
-      "performance": {
-        "project_performance": "AVG",
-        "practical_skills": "AVG",
-        "research_interest": "AVG",
-        "communication_skills": "AVG",
-        "leadership_qualities": "AVG",
-        "teamwork": "AVG",
-        "time_management": "AVG",
-        "self_learning": "AVG"
-      },
-      "cluster": 0
-    }
+{
+  "aptitudes": {
+    "linguistic": 12,
+    "musical": 10,
+    "bodily": 11,
+    "logical_mathematical": 15,
+    "spatial_visualization": 14,
+    "interpersonal": 13,
+    "intrapersonal": 12,
+    "naturalist": 11
+  },
+  "performance": {
+    "project_performance": "AVG",
+    "practical_skills": "AVG",
+    "research_interest": "AVG",
+    "communication_skills": "AVG",
+    "leadership_qualities": "AVG",
+    "teamwork": "AVG",
+    "time_management": "AVG",
+    "self_learning": "AVG"
+  },
+  "cluster": 0
+}
 
 Sample response:
-
+{
+  "status": "success",
+  "top_predictions": [
     {
-      "status": "success",
-      "top_predictions": [
-        {
-          "rank": 1,
-          "career": "Economist",
-          "confidence": 31.11
-        }
-      ]
+      "rank": 1,
+      "career": "Economist",
+      "confidence": 31.11
     }
+  ]
+}
 
 ## Input Schema
 
@@ -231,26 +278,21 @@ Allowed performance values:
 ## Run Locally
 
 1. Clone the repo
-
-    git clone https://github.com/ManikantaPerla07/Career-ai
-    cd Career-ai
+git clone https://github.com/ManikantaPerla07/Career-ai
+cd Career-ai
 
 2. Create and activate virtual environment (Windows)
-
-    python -m venv .venv
-    .venv\Scripts\activate
+python -m venv .venv
+.venv\Scripts\activate
 
 3. Install dependencies
-
-    pip install -r requirements.txt
+pip install -r requirements.txt
 
 4. Start the app
-
-    python backend/app.py
+python backend/app.py
 
 5. Open in browser
-
-    http://127.0.0.1:5000
+http://127.0.0.1:5000
 
 ## Deploy on Render
 
@@ -265,12 +307,12 @@ Recommended settings:
 ## Troubleshooting
 
 If model fails to load:
-- Ensure all artifact files exist in backend folder
+- Ensure artifact files exist in backend folder
 - Confirm file names are unchanged
 - Check logs for missing joblib or JSON files
 
 If prediction fails with feature mismatch:
-- Verify all required aptitude and performance keys are present
+- Verify all required aptitude/performance keys are present
 - Ensure performance values are POOR, AVG, or BEST
 - Confirm backend feature engineering order was not modified
 
@@ -285,14 +327,14 @@ If deploy fails:
 
 ## FAQ
 
-### Why top 5 predictions instead of one?
-Model probabilities are more useful when presented as ranked options, not a single forced label.
+Why top 5 predictions instead of one?
+- Model probabilities are more useful when presented as ranked options.
 
-### Is this suitable for final career decisions?
-No. This is a guidance tool for educational use and should be combined with mentoring and real-world evaluation.
+Is this suitable for final career decisions?
+- No. This is a guidance tool for educational use and should be combined with mentoring.
 
-### Why do confidence scores not add to 100?
-Only top-ranked classes are returned, not all possible career classes.
+Why confidence scores do not sum to 100?
+- Only top-ranked classes are returned, not all classes.
 
 ## Roadmap
 
@@ -304,13 +346,83 @@ Only top-ranked classes are returned, not all possible career classes.
 
 ## Author
 
-Manikanta Perla  
+Manikanta Perla
 Email: careerai.help@gmail.com
 
 ## License
 
 This project is intended for educational and academic use.
 
----
+CONTRIBUTING.md (new)
 
-If you want, I can also give you matching professional content for CONTRIBUTING.md and CHANGELOG.md in the same style so the whole repo looks consistent.
+# Contributing
+
+Thanks for contributing to CareerAI.
+
+## Workflow
+
+1. Fork the repository
+2. Create a branch from main
+3. Keep PRs focused to one change area
+4. Update docs for behavior changes
+5. Open PR with test notes
+
+## Validation Checklist
+
+- App runs with: python backend/app.py
+- /health endpoint works
+- /predict endpoint works
+- Static pages and assets load correctly
+
+## Pull Request Checklist
+
+- I reviewed my own changes
+- I updated docs where needed
+- I did not commit secrets
+- I kept the PR focused
+
+CHANGELOG.md (new)
+
+# Changelog
+
+All notable project updates are documented here.
+
+## 2026-04-14
+
+### Added
+- Professional README structure and polished sections
+- API and schema documentation
+- Troubleshooting and FAQ
+
+### Changed
+- Improved deployment and run instructions
+- Cleaned content for GitHub readability
+
+### Notes
+- Documentation quality upgrade release
+
+pull_request_template.md (new)
+
+## Summary
+Describe what this PR changes and why.
+
+## Type of Change
+- [ ] Documentation
+- [ ] Bug fix
+- [ ] Feature
+- [ ] Refactor
+- [ ] Other
+
+## Validation
+- [ ] App starts locally
+- [ ] /health tested
+- [ ] /predict tested
+- [ ] Static pages tested
+
+## Checklist
+- [ ] Self-reviewed
+- [ ] Docs updated
+- [ ] No secrets committed
+- [ ] Focused PR
+
+If you want, I can next give you a one-command Git block to add these 4 files and push cleanly to Career-ai in one shot.
