@@ -2,10 +2,8 @@ Great call. Paste this as your full README.md for Career-ai:
 
 # CareerAI - AI Career Guidance System
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-blue.svg)](https://career-ai-wefq.onrender.com/)  
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue)  
-![Backend](https://img.shields.io/badge/Backend-Flask-black)  
-![Deployment](https://img.shields.io/badge/Deploy-Render-46E3B7)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue.svg)](https://career-ai-wefq.onrender.com/)  ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)  
+![Backend](https://img.shields.io/badge/Backend-Flask-black)  ![Deployment](https://img.shields.io/badge/Deploy-Render-46E3B7)
 
 CareerAI is a full-stack machine learning web app that recommends top career paths from aptitude and performance inputs.  
 It uses a trained Gradient Boosting model and serves both API endpoints and frontend pages from one Flask service.
